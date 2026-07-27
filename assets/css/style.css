@@ -62,47 +62,165 @@ ul {
 .btn-outline { background: transparent; color: var(--primary-red); border: 2px solid var(--primary-red); }
 .btn-outline:hover { background: var(--primary-red); color: #fff; }
 .btn-outline-red { color: var(--primary-red); border: 2px solid var(--primary-red); border-radius: 30px; padding: 10px 30px; }
-.btn-dark { background: rgba(0,0,0,0.7); color: #fff; border: 2px solid #fff; }
-.btn-yellow { background: var(--yellow); color: var(--dark); border: none; }
-.btn-white { background: #fff; color: var(--primary-red); border: none; }
+.btn-outline-red:hover {
+    background: var(--primary-red);
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(255, 0, 0, 0.3);
+}
+.btn-dark { 
+    background: rgba(0,0,0,0.7); 
+    color: #fff; 
+    border: 2px solid #fff; 
+}
+.btn-dark:hover { 
+    background: #fff; 
+    color: var(--dark); 
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
+}
 
+/* Tombol Kuning */
+.btn-yellow { 
+    background: var(--yellow); 
+    color: var(--dark); 
+    border: none; 
+}
+.btn-yellow:hover { 
+    background: #e6e600; 
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(255, 255, 0, 0.3);
+}
+
+/* Tombol Putih */
+.btn-white { 
+    background: #fff; 
+    color: var(--primary-red); 
+    border: none; 
+}
+.btn-white:hover { 
+    background: #f0f0f0; 
+    color: var(--dark-red);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.3);
+}
+
+/* --- NAVBAR --- */
 /* --- NAVBAR --- */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: #fff;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    position: sticky;
-    top: 0;
+    background: #ffffff;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+    position: absolute;
+    top: 35px;
+    left: 35px;
+    right: 35px;
     z-index: 100;
+    border-radius: 20px; /* Sudut lebih bulat menyesuaikan desain */
+    overflow: hidden;
+    padding: 0 12px 0 0; /* Padding kanan disesuaikan untuk tombol menyatu */
 }
+
+/* Redesain Efek Miring & Garis Kuning (Pure CSS) */
 .logo-container {
-    background: var(--primary-red);
-    padding: 15px 50px;
-    clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%); /* Membuat efek miring (skew) */
+    position: relative;
+    padding: 12px 45px 12px 35px;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    z-index: 1;
+    clip-path: none; /* Dihapus agar garis kuning bisa terlihat */
 }
+
+/* Background Merah Miring */
+.logo-container::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -20px; bottom: 0; right: 15px; /* Menyisakan ruang untuk kuning di kanan */
+    background: var(--primary-red);
+    transform: skewX(-22deg); /* Kemiringan presisi */
+    z-index: -1;
+}
+
+/* Background Kuning Miring */
+.logo-container::after {
+    content: '';
+    position: absolute;
+    top: 0; bottom: 0; right: 7px;
+    width: 15px; /* Lebar garis kuning */
+    background: var(--yellow);
+    transform: skewX(-22deg);
+    z-index: -2;
+}
+
 .logo-text {
     color: var(--yellow);
-    font-weight: 700;
+    font-weight: 800; /* Dibuat lebih tebal */
+    font-size: 1.9rem; /* Ukuran disesuaikan */
     margin: 0;
     font-family: 'Souvenir', serif;
 }
-.nav-links a {
-    margin: 0 15px;
-    color: var(--text-color);
-    font-weight: 600;
-    font-size: 14px;
-}
-.nav-links a:hover { color: var(--primary-red); }
-.nav-buttons { padding-right: 20px; }
 
-/* Styling default untuk menu container di desktop */
+/* Tipografi Menu Dirapikan */
+.nav-links a {
+    margin: 0 12px;
+    color: var(--primary-red);
+    font-weight: 800; /* Sangat tebal (bold) seperti desain */
+    font-size: 13.5px;
+    letter-spacing: 0.5px; /* Sedikit renggang agar mudah dibaca */
+}
+
+.nav-links a:hover {
+    color: var(--dark-red);
+}
+
+/* --- TOMBOL NAVBAR MENYATU (BUTTON GROUP) --- */
+.nav-buttons {
+    display: flex;
+    gap: 12px; /* Memberikan jarak antar tombol */
+    padding-right: 0;
+}
+
+.nav-buttons .btn-red {
+    border-radius: 30px; /* Kembali oval penuh */
+    margin-right: 0;
+    padding: 10px 22px;
+}
+
+.nav-buttons .btn-red:hover { 
+    background: #cc0000; 
+    border-color: #cc0000;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(255, 0, 0, 0.3);
+}
+
+.nav-buttons .btn-outline {
+    border-radius: 30px; /* Kembali oval penuh */
+    margin-left: 0; /* Hapus margin negatif */
+    padding: 10px 22px;
+}
+
+.nav-buttons .btn-outline:hover { 
+    background: var(--primary-red); 
+    color: #fff; 
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(255, 0, 0, 0.3);
+}
+
+/* --- WADAH MENU DESKTOP --- */
 .nav-menu {
     display: flex;
     align-items: center;
-    width: 100%;
     justify-content: flex-end;
+    flex-grow: 1;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    margin-right: 30px; /* Memberi jarak pas antara teks menu dan grup tombol */
 }
 
 /* Sembunyikan tombol hamburger di Desktop */
@@ -118,25 +236,41 @@ ul {
 
 /* --- HERO SECTION --- */
 .hero {
-    /* Ganti URL ini dengan link gambar truk hero Anda */
-    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('../pic/hero-background.png') no-repeat center center/cover;
-    height: 80vh;
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../pic/hero-background.png') no-repeat center 100%/cover;
+    height: 100vh;
     display: flex;
     align-items: center;
-    padding: 0 5%;
+    padding: 100px 5% 0 5%; /* Padding atas ditambah agar teks tidak tertutup navbar */
+    text-align: left;
+    position: relative;
 }
+
 .hero-content h2 {
     color: #fff;
-    font-size: 3rem;
-    line-height: 1.2;
-    margin-bottom: 10px;
+    font-size: 3.2rem;
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: 12px;
 }
+
 .hero-content p {
-    color: #ddd;
-    font-size: 1.2rem;
+    color: #eee;
+    font-size: 1.15rem;
     margin-bottom: 30px;
+    font-weight: 400;
 }
-.hero-buttons .btn { margin-right: 10px; }
+
+.hero-buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 15px; /* Memberi jarak antar tombol yang presisi */
+}
+
+.hero-buttons .btn {
+    padding: 12px 28px;
+    font-size: 14px;
+    margin-right: 0; /* Reset margin karena sudah pakai fitur gap */
+}
 
 /* --- TENTANG KAMI --- */
 .about {
@@ -146,7 +280,7 @@ ul {
 }
 .about-image img { width: 100%; border-radius: 10px; }
 .subtitle { color: var(--primary-red); font-weight: 700; font-size: 14px; margin-bottom: 10px; display: block; }
-.about-text h2 { font-size: 2rem; margin-bottom: 20px; }
+.about-text h2 { font-size: 2rem; margin-bottom: 20px; font-weight: 800; }
 .about-text p { margin-bottom: 15px; color: #555; }
 
 /* --- LAYOUT GRID --- */
@@ -161,7 +295,12 @@ ul {
     overflow: hidden;
     box-shadow: 0 5px 15px rgba(0,0,0,0.05);
 }
-.branch-card img { width: 100%; height: 200px; object-fit: cover; }
+.branch-card img {
+    width: 100%;
+    height: 200px; /* Sesuaikan tinggi kotak */
+    object-fit: cover; /* Memastikan gambar terpotong rapi tanpa gepeng */
+    display: block;
+}
 .branch-card h3 { padding: 15px; font-size: 1.2rem; }
 
 /* --- KEUNGGULAN --- */
@@ -218,64 +357,144 @@ footer { background: var(--dark); color: #ccc; padding-top: 50px; }
     .about { flex-direction: column; }
     .cta-content { flex-direction: column; text-align: center; gap: 20px; }
 }
+
 @media (max-width: 768px) {
     .grid-3, .grid-5, .grid-4 { grid-template-columns: 1fr; }
-    
-    /* Perbaikan Navbar untuk Mobile */
+
     .navbar {
+        position: sticky; 
+        top: 0;
+        left: 0;
+        right: 0;
+        border-radius: 0;
+        overflow: visible;
+        
         flex-direction: row; 
         flex-wrap: wrap; 
-        padding-bottom: 0;
-        position: relative; /* Agar dropdown menu rapi di bawahnya */
-    }
-    .logo-container {
-        clip-path: none; 
-        width: auto; 
-        margin-bottom: 0; 
-        padding: 15px 20px;
-    }
-    
-    /* Tampilkan tombol hamburger */
-    .menu-toggle {
-        display: block; 
+        align-items: center;
+        justify-content: space-between;
+        
+        /* ATUR INI: Ubah padding atas-bawah jadi 0 agar menempel penuh */
+        padding: 0 16px 0 0; 
+        
+        background: #ffffff;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
     }
 
-    /* Sembunyikan menu by default dan buat jadi dropdown */
+    .logo-container {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        
+        /* ATUR INI: Berikan padding vertikal di sini agar tinggi kotak merahnya ikut menyesuaikan */
+        padding: 15px 40px 15px 25px; 
+        
+        border-radius: 0;
+        clip-path: polygon(0 0, 100% 0, 82% 100%, 0% 100%);
+        background: var(--primary-red);
+    }
+
+    .logo-text {
+        font-size: 1.4rem;
+        letter-spacing: 1px;
+    }
+
+    .menu-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 8px;
+        font-size: 25px;
+        color: var(--dark);
+        padding: 0;
+    }
+
     .nav-menu {
-        display: none; /* Disembunyikan */
+        display: none; /* Disembunyikan secara default */
         flex-direction: column;
         width: 100%;
-        background: #fff;
+        background: #ffffff;
         position: absolute;
-        top: 100%;
+        top: 100%; /* Pas di bawah navbar */
         left: 0;
         padding: 20px 0;
-        box-shadow: 0 10px 10px rgba(0,0,0,0.1);
-        border-top: 1px solid #eee;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        border-top: 1px solid #f0f0f0;
+        z-index: 999; /* Diberi z-index tinggi agar di ATAS hero image */
     }
 
-    /* Tampilkan menu saat tombol diklik (class .active ditambahkan lewat JS) */
+    /* Saat tombol hamburger diklik (Javascript menambah class active) */
     .nav-menu.active {
-        display: flex;
+        display: flex !important; /* Pakai !important agar pasti muncul */
     }
 
-    /* Susun link dan tombol ke bawah */
-    .nav-links {
-        display: flex;
-        flex-direction: column;
-        text-align: center;
-        width: 100%;
+    .nav-links { 
+        display: flex; 
+        flex-direction: column; 
+        text-align: center; 
+        width: 100%; 
+        
+        /* INI KUNCINYA: Hapus efek dorongan dari desktop */
+        margin-right: 0; 
     }
-    .nav-links a {
-        margin: 15px 0;
-    }
-    .nav-buttons {
-        display: flex;
-        flex-direction: column;
-        padding-right: 0;
-        gap: 15px;
-        margin-top: 10px;
+    .nav-links a { margin: 12px 0; font-size: 15px; }
+
+    .nav-buttons { 
+        display: flex; 
+        flex-direction: column; /* Memaksa turun ke bawah */
+        gap: 15px; /* Memberi jarak antar tombol */
+        padding: 0 20px;
+        margin-top: 20px;
     }
     
-    .hero-content h2 { font-size: 2rem; }
+    /* 2. Reset tombol agar kembali oval penuh dan lebarnya 100% */
+    .nav-buttons .btn-red, 
+    .nav-buttons .btn-outline {
+        width: 100%; 
+        text-align: center;
+        border-radius: 30px; /* Kembalikan sudut jadi bulat penuh */
+        margin: 0; /* Hapus efek margin negatif (-2px) dari desktop */
+    }
+
+    /* Hero Khusus Mobile Saja */
+    .hero {
+        background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), 
+                    url('../pic/vertical-hero-background.png') no-repeat center center/cover;
+        
+        /* UBAH INI: Kembalikan jadi 100dvh penuh selayar */
+        height: 100dvh; 
+        min-height: unset;
+        
+        /* Tambahkan padding-top agar teks tidak ketutupan navbar */
+        padding: 80px 20px 0 20px; 
+        
+        text-align: center;
+        justify-content: center;
+    }
+
+    .hero-content h2 {
+        font-size: 1.8rem;
+        line-height: 1.3;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+        margin-bottom: 25px;
+    }
+
+    .hero-buttons {
+        flex-direction: column; /* Tombol tumpuk HANYA di HP */
+        gap: 12px;
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+
+    .hero-buttons .btn {
+        margin-right: 0;
+        width: 100%;
+        text-align: center;
+    }
 }
